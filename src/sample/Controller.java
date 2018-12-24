@@ -215,6 +215,20 @@ public class Controller implements Initializable, Actions {
     }
 
     @Override
+    public void back() {
+
+        if(firstValue.equals("first")) {
+            value1String = value1String.substring(0,  value1String.length() -1 );
+            numLabel.setText(value1String);
+        }
+        if( calc.equals("+") || calc.equals("-") || calc.equals("x") || calc.equals("%") ){
+
+            value2String = value2String.substring(0,  value2String.length() -1 );
+            numLabel.setText(value2String);
+        }
+    }
+
+    @Override
     public void equal(){
         equalClicked = "equal";
 

@@ -21,6 +21,7 @@ public interface Actions {
 
      void zero();
 
+     void back();
      //clicking the button '1'
      void one();
 
