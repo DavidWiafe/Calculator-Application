@@ -16,6 +16,8 @@ public interface Actions {
 
      void clear();
 
+     void decimal();
+
      //multiplying values method
      void multiple();
 
@@ -48,6 +50,7 @@ public interface Actions {
 
      //clicking the button '9'
      void nine();
+
 
 
 

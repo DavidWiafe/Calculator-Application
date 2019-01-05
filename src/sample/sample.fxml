@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <GridPane layoutX="55.0" layoutY="84.0" prefHeight="235.0" prefWidth="320.0">
         <columnConstraints>
@@ -41,6 +41,7 @@
             <Button mnemonicParsing="false" onAction="#divide" text="\%" GridPane.columnIndex="3" GridPane.rowIndex="2" />
             <Button mnemonicParsing="false" onAction="#multiple" text="X" GridPane.columnIndex="3" GridPane.rowIndex="3" />
             <Button mnemonicParsing="false" onAction="#back" text="&lt;&lt;" GridPane.columnIndex="4" />
+            <Button mnemonicParsing="false" onAction="#decimal" text="." GridPane.columnIndex="4" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <Label fx:id="numLabel" layoutX="55.0" layoutY="43.0" />

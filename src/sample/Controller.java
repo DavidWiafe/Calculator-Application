@@ -215,6 +215,29 @@ public class Controller implements Initializable, Actions {
     }
 
     @Override
+    public void decimal(){
+        String dec = ".";
+        if(firstValue.equals("first")) {
+
+            if (  !value1String.contains(".") ) {
+                value1String += dec;
+            }else{
+
+            }
+        }
+
+
+        if( calc.equals("+") || calc.equals("-") || calc.equals("x") || calc.equals("%") ){
+            if (  !value2String.contains(".") ) {
+                value2String += dec;
+            }else{
+
+            }
+        }
+
+    }
+
+    @Override
     public void back() {
 
         if(firstValue.equals("first")) {
@@ -251,7 +274,7 @@ public class Controller implements Initializable, Actions {
             try {
                 answer = value1Double / value2Double;
             }catch(ArithmeticException e){
-                System.out.println("Math Exception"+e);
+                System.out.println("Math Exception = "+e);
             }
         }
 
