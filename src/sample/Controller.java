@@ -15,11 +15,15 @@ public class Controller implements Initializable, Actions {
 
     private String value2String = "";
 
+    private int countClicks = 0;
+
     private double value1Double;
 
     private double value2Double;
 
     private double answer;
+
+    private String answer1String;
 
     private String firstValue = "first";
 
@@ -29,52 +33,38 @@ public class Controller implements Initializable, Actions {
 
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources) { }
 
+    public void numberClick(String value){
 
+        if(firstValue.equals("first")) {
+            value1String += value;
+            numLabel.setText(value1String);
+        }
+        if( calc.equals("+")|| calc.equals("-") || calc.equals("x") || calc.equals("%")){
+            value2String += value;
+            numLabel.setText(value2String);
+        }
 
     }
 
     @Override
     public void one(){
         String one = "1";
-        if(firstValue.equals("first")) {
-            value1String += one;
-            numLabel.setText(value1String);
-        }
-        if( calc.equals("+")|| calc.equals("-") || calc.equals("x") || calc.equals("%")){
-            value2String +=one;
-            numLabel.setText(value2String);
-        }
-
+        numberClick(one);
     }
 
     @Override
     public void two() {
         String two = "2";
-        if(firstValue.equals("first")) {
-            value1String += two;
-            numLabel.setText(value1String);
-        }
-        if( calc.equals("+") || calc.equals("-") || calc.equals("x") || calc.equals("%") ){
-            value2String +=two;
-            numLabel.setText(value2String);
-        }
-
+        numberClick(two);
     }
 
     @Override
     public void three() {
 
         String three = "3";
-        if(firstValue.equals("first")) {
-            value1String += three;
-            numLabel.setText(value1String);
-        }
-        if( calc.equals("+") || calc.equals("-") || calc.equals("x")|| calc.equals("%") ){
-            value2String +=three;
-            numLabel.setText(value2String);
-        }
+        numberClick(three);
 
     }
 
@@ -82,14 +72,7 @@ public class Controller implements Initializable, Actions {
     public void four() {
 
         String four = "4";
-        if(firstValue.equals("first")) {
-            value1String += four;
-            numLabel.setText(value1String);
-        }
-        if( calc.equals("+") || calc.equals("-") || calc.equals("x") || calc.equals("%")){
-            value2String +=four;
-            numLabel.setText(value2String);
-        }
+        numberClick(four);
 
     }
 
@@ -97,14 +80,7 @@ public class Controller implements Initializable, Actions {
     public void five() {
 
         String five = "5";
-        if(firstValue.equals("first")) {
-            value1String += five;
-            numLabel.setText(value1String);
-        }
-        if( calc.equals("+") || calc.equals("-") || calc.equals("x") || calc.equals("%")){
-            value2String +=five;
-            numLabel.setText(value2String);
-        }
+        numberClick(five);
 
     }
 
@@ -112,14 +88,7 @@ public class Controller implements Initializable, Actions {
     public void six() {
 
         String six = "6";
-        if(firstValue.equals("first")) {
-            value1String += six;
-            numLabel.setText(value1String);
-        }
-        if( calc.equals("+") || calc.equals("-") || calc.equals("x") || calc.equals("%")){
-            value2String +=six;
-            numLabel.setText(value2String);
-        }
+        numberClick(six);
 
     }
 
@@ -127,14 +96,7 @@ public class Controller implements Initializable, Actions {
     public void seven() {
 
         String seven = "7";
-        if(firstValue.equals("first")) {
-            value1String += seven;
-            numLabel.setText(value1String);
-        }
-        if( calc.equals("+") || calc.equals("-") || calc.equals("x") || calc.equals("%") ){
-            value2String +=seven;
-            numLabel.setText(value2String);
-        }
+        numberClick(seven);
 
     }
 
@@ -142,31 +104,34 @@ public class Controller implements Initializable, Actions {
     public void eight() {
 
         String eight = "8";
-        if(firstValue.equals("first")) {
-            value1String += eight;
-            numLabel.setText(value1String);
-        }
-        if( calc.equals("+") || calc.equals("-") || calc.equals("x") || calc.equals("%")){
-            value2String +=eight;
-            numLabel.setText(value2String);
-        }
+        numberClick(eight);
 
     }
 
     @Override
     public void nine() {
-
+        //still experimenting with nine so changes will not take place
         String nine = "9";
-        if(firstValue.equals("first")) {
+        if (firstValue.equals("first")) {
             value1String += nine;
-            numLabel.setText(value1String);
+            numLabel.setText("F " + value1String);
         }
-        if( calc.equals("+") || calc.equals("-") || calc.equals("x") || calc.equals("%") ){
-            value2String +=nine;
+        if (calc.equals("+") || calc.equals("-") || calc.equals("x") || calc.equals("%")) {
+
+            if(countClicks % 2 != 0) {
+                value2String += nine;
+            }
+            numLabel.setText("S " + value2String);
+        }
+
+        if(countClicks % 2 == 0 && calc.equals("+")){
+
+            value1String = answer1String;
+            //value2String ="";
+            value2String += nine;
             numLabel.setText(value2String);
+            System.out.println("one = " + value1String + "two =" + value2String);
         }
-
-
     }
 
     @Override
@@ -175,6 +140,11 @@ public class Controller implements Initializable, Actions {
         firstValue = "second";
         numLabel.setText("");
         //numLabel.setText("value 1 =" + value1String+"Value 2 ="+value2String);
+        countClicks += 1;
+        value2String = "";
+        System.out.println(countClicks+"and one: "+value2String);
+
+
     }
 
     @Override
@@ -225,7 +195,6 @@ public class Controller implements Initializable, Actions {
 
             }
         }
-
 
         if( calc.equals("+") || calc.equals("-") || calc.equals("x") || calc.equals("%") ){
             if (  !value2String.contains(".") ) {
@@ -278,7 +247,19 @@ public class Controller implements Initializable, Actions {
             }
         }
 
-        numLabel.setText("Equals = "+answer);
+        if(countClicks == 2 && calc.equals("+")){
+            value2String = "";
+           /* value2String = "";
+            value1String ="";*/
+            System.out.println(value2String +"\n"+value1String);
+
+            //answer = answer + 9;
+
+        }
+        //value2String=Double.toString(answer);
+        //value1String = "";
+        answer1String = Double.toString(answer);
+        numLabel.setText("Equals = "+answer1String);
 
 
     }
