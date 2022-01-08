@@ -46,6 +46,7 @@ public class Controller implements Initializable, Actions {
             numLabel.setText(value2String);
         }
 
+
     }
 
     @Override
@@ -188,7 +189,7 @@ public class Controller implements Initializable, Actions {
     public void decimal(){
         String dec = ".";
         if(firstValue.equals("first")) {
-
+            // add the decimal only if there isn't already ones
             if (  !value1String.contains(".") ) {
                 value1String += dec;
             }else{
@@ -254,13 +255,13 @@ public class Controller implements Initializable, Actions {
             System.out.println(value2String +"\n"+value1String);
 
             //answer = answer + 9;
-
         }
         //value2String=Double.toString(answer);
         //value1String = "";
         answer1String = Double.toString(answer);
-        numLabel.setText("Equals = "+answer1String);
+        numLabel.setText("Equals = " + answer1String);
 
+       // numLabel.setText(value2String);
 
     }
 
@@ -279,7 +280,7 @@ public class Controller implements Initializable, Actions {
         firstValue = "first";
 
         numLabel.setText(value1String +""+value2String);
-
+        //numLabel.setText("testing");
     }
 
 }
